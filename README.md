@@ -2,7 +2,7 @@
 
 A polished, interactive wall calendar component built with **Next.js**, **TypeScript**, and **Tailwind CSS**, inspired by a physical wall calendar aesthetic.
 
- **Live Demo**: [wall-calendar.app]
+ **Live Demo**: [wall-calendar-pankaj.app]
 
 ---
 
