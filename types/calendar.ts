@@ -13,12 +13,12 @@ export interface CalendarDay {
 export interface Note {
   id: string
   text: string
-  dateRangeLabel: string   // e.g. "Jan 3 – Jan 7"
+  dateRangeLabel: string
   createdAt: string
 }
 
 export interface CalendarState {
-  currentMonth: number     // 0-11
+  currentMonth: number
   currentYear: number
   dateRange: DateRange
   hoverDate: Date | null
