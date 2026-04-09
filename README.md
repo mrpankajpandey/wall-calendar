@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Wall Calendar — Interactive React Component
 
-## Getting Started
+A polished, interactive wall calendar component built with **Next.js**, **TypeScript**, and **Tailwind CSS**, inspired by a physical wall calendar aesthetic.
 
-First, run the development server:
+ **Live Demo**: [wall-calendar.app]
+
+---
+
+##  Features
+
+| Feature | Details |
+|---|---|
+| **Wall Calendar Aesthetic** | Hero photo per month, geometric blue wave overlay, spiral binding bar |
+| **Day Range Selector** | Click start → hover preview → click end. Clear visual states for start, end, in-range, and hover-preview |
+| **Live Hover Preview** | See the range fill *before* confirming your end date |
+| **Notes Panel** | Attach notes to a selected date range. Persists via `localStorage` |
+| **Month Flip Animation** | Smooth fade + scale transition when navigating months |
+| **Holiday Markers** | Orange dot indicators for Indian + international holidays |
+| **Today Indicator** | Blue dot beneath today's date |
+| **Responsive** | Desktop: side-by-side two-column layout. Mobile: stacked vertically |
+
+---
+
+##  Tech Stack
+
+- **Next.js 14** (App Router)
+- **TypeScript** — strict types throughout
+- **Tailwind CSS** — utility-first styling
+- **shadcn/ui** — Button, Textarea, Badge (UI primitives only)
+- **Lucide React** — icons
+- **localStorage** — note persistence (no backend)
+
+##  Run Locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mrpankajpandey/wall-calendar
+cd wall-calendar
+pnpm install
+pnpm  dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design Decisions
 
-## Learn More
+### Custom Calendar Grid (not react-day-picker)
+Built the grid from scratch using `buildCalendarDays()` to have full control over:
+- Monday-first week layout
+- Range selection visual states
+- Hover preview before confirming end date
 
-To learn more about Next.js, take a look at the following resources:
+### Hooks Separation
+Each concern is isolated:
+- `useCalendar` — *what month are we on?*
+- `useDateRange` — *what dates are selected?*
+- `useNotes` — *what notes exist?*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This makes each hook independently testable and the main component a clean composition.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### localStorage for Notes
+No backend needed. Notes survive page refresh. `try/catch` handles SSR and private mode gracefully.
 
-## Deploy on Vercel
+### shadcn Only for Primitives
+Used shadcn's `Button`, `Textarea`, and `Badge` for accessible, consistent UI elements. All calendar logic and grid rendering is custom.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Responsive Behaviour
+
+| Breakpoint | Layout |
+|---|---|
+| `< md` (mobile) | Stacked: Hero → Header → Grid → Notes |
+| `≥ md` (desktop) | Two columns: Calendar left, Notes right |
