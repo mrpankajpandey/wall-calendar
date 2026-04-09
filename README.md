@@ -2,7 +2,7 @@
 
 A polished, interactive wall calendar component built with **Next.js**, **TypeScript**, and **Tailwind CSS**, inspired by a physical wall calendar aesthetic.
 
- **Live Demo**: [wall-calendar-pankaj.app]
+ **Live Demo**: [https://wall-calendar-pankaj.app]
 
 ---
 
@@ -23,7 +23,7 @@ A polished, interactive wall calendar component built with **Next.js**, **TypeSc
 
 ##  Tech Stack
 
-- **Next.js 14** (App Router)
+- **Next.js 16** (App Router)
 - **TypeScript** — strict types throughout
 - **Tailwind CSS** — utility-first styling
 - **shadcn/ui** — Button, Textarea, Badge (UI primitives only)
